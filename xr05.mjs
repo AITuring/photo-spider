@@ -48,7 +48,7 @@ async function getImages(url) {
         const images = [];
         $('img').each((index, element) => {
             const src = $(element).attr('src');
-            images.push('https://www.xr05.vip' + src);
+            images.push('' + src);
         });
 
         return images;
@@ -102,7 +102,7 @@ async function downloadAllImages(url) {
 }
 
 const timeStart = Date.now();
-const baseUrl = 'https://www.xiuren009.top/XiuRen/15940';
+const baseUrl = '';
 
 // **** 修改此处为需要下载的页数 ****
 const pageCount = 38;
