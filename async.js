@@ -20,10 +20,10 @@ const downloadImage = (src, dest, callback) => {
 
 let imgSrc=[]
 
-for (let i = 1; i <=71;i++) {
+for (let i = 1; i <= 50; i++) {
     let nvshen = {
-        url: `http://q1.xiongmaoya.com/2020/08/05/21508/${i}.jpg`,
-        title: `dswtfg${i}`
+        url: `http://d.duotuwang.com/2022/11/07/32046/${i}.jpg`,
+        title: `dahz${i}`
     }
     imgSrc.push(nvshen)
 }
@@ -40,4 +40,6 @@ async.mapSeries(imgSrc, function(item, callback) {
     callback && callback(null, item);
   }, 100);
 });
+
+
 
