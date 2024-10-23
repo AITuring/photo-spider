@@ -47,8 +47,16 @@ async function getImages(url) {
 
         const images = [];
         $('img').each((index, element) => {
-            const src = $(element).attr('src');
-            images.push('' + src);
+            let src = $(element).attr('src');
+            // 确保 src 是有效的 URL
+            if (src) {
+                // 如果 src 是相对路径，构造完整的 URL
+                if (!src.startsWith('http://') && !src.startsWith('https://')) {
+                    src = new URL(src, url).href; // 使用 URL 构造函数来处理相对路径
+                }
+                console.log(`Found image: ${src}`);
+                images.push(src);
+            }
         });
 
         return images;
@@ -102,7 +110,7 @@ async function downloadAllImages(url) {
 }
 
 const timeStart = Date.now();
-const baseUrl = '';
+const baseUrl = 'http://d15.876515.xyz/XiuRen/16251';
 
 // **** 修改此处为需要下载的页数 ****
 const pageCount = 38;
