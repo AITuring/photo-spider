@@ -110,7 +110,7 @@ async function downloadAllImages(url) {
 }
 
 const timeStart = Date.now();
-const baseUrl = 'http://d15.876515.xyz/XiuRen/16188';
+const baseUrl = 'https://xiutaku.com/16341';
 
 // **** 修改此处为需要下载的页数 ****
 const pageCount = 38;
@@ -121,7 +121,7 @@ const pageCount = 38;
 
         for (let i = 1; i <= pageCount; i++) {
             console.log(`Processing page ${i}...`);
-            const url = `${baseUrl}_${i}.html`;
+            const url = `${baseUrl}?page=${i}.html`;
             await downloadAllImages(url);
         }
         const timeEnd = Date.now();
