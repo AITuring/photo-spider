@@ -110,7 +110,7 @@ async function downloadAllImages(url) {
 }
 
 const timeStart = Date.now();
-const baseUrl = 'https://xiutaku.com/16341';
+const baseUrl = 'https://xiutaku.com/4779';
 
 // **** 修改此处为需要下载的页数 ****
 const pageCount = 38;
