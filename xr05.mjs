@@ -110,7 +110,7 @@ async function downloadAllImages(url) {
 }
 
 const timeStart = Date.now();
-const baseUrl = 'http://4d.xiuren59.top/XingYan/17723';
+const baseUrl = 'http://4d.xiuren59.top/XiuRen/16484';
 
 // **** 修改此处为需要下载的页数 ****
 const pageCount = 38;

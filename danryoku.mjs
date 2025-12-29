@@ -10,8 +10,8 @@ const __dirname = path.dirname(__filename);
 
 // **** 配置区域 - 后期需要修改的参数 ****
 const CONFIG = {
-    baseUrl: 'https://img.danryoku.com/2025/06',  // 基础URL
-    baseId: 'Coser@年年Nnian_-活力兔',                          // 图片ID前缀
+    baseUrl: 'https://img.danryoku.com/2025/10',  // 基础URL
+    baseId: 'XR-Uncensored-汁汁_-R18-秀人网模特-实习期女秘书',                          // 图片ID前缀 
     maxCount: 100,                               // 最大尝试下载数量
     imageFormat: 'webp'                          // 图片格式
 };
@@ -96,6 +96,7 @@ function generateImageIds(baseId, count) {
     const baseIdWithoutNumber = baseId.replace(/-\d+$/, ''); // 移除末尾的数字
     
     for (let i = 1; i <= count; i++) {
+        // TODO 这里要看情况改
         if (i < 10) {
             ids.push(`${baseIdWithoutNumber}.0${i}P`);
         } else {
