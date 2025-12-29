@@ -253,10 +253,12 @@ async function main() {
         }
 
         for (const mb of list) {
+          // 过滤转发和非原创
+          if (mb.retweeted_status) continue;
+          if (mb.promotion && mb.promotion.type === 'ad') continue;
+          
           const id = String(mb.id);
           if (seen.has(id)) continue;
-          const rp0 = buildRepost(mb);
-          if (rp0.isRepost) continue;
           seen.add(id);
           const text = mb.text_raw || mb.text || '';
           const d = parseDate(mb.created_at);
@@ -482,11 +484,13 @@ async function main() {
       console.log(`[WEB-only] step=${step+1} 返回=${list.length} since_id=${webSinceId || ''}`);
       if (!list.length) break;
       for (const mb of list) {
-        const id = String(mb.id);
-        if (seen.has(id)) continue;
-        const rp0 = buildRepost(mb);
-        if (rp0.isRepost) continue;
-        seen.add(id);
+        // 过滤转发和非原创
+      if (mb.retweeted_status) continue;
+      if (mb.promotion && mb.promotion.type === 'ad') continue;
+
+      const id = String(mb.id);
+      if (seen.has(id)) continue;
+      seen.add(id);
         const text = mb.text_raw || mb.text || '';
         const d = parseDate(mb.created_at);
         const link = `https://weibo.com/${mb.user?.id || userInfo.uid}/${mb.bid || mb.mblogid || ''}`;
@@ -554,10 +558,12 @@ async function main() {
       console.log(`[WEB接口] 第${pn}页 返回${list.length} since_id=${webSinceId || ''}`);
       if (!list.length) { stale++; if (stale >= 3) break; }
       for (const mb of list) {
+        // 过滤转发和非原创
+        if (mb.retweeted_status) continue;
+        if (mb.promotion && mb.promotion.type === 'ad') continue;
+        
         const id = String(mb.id);
         if (seen.has(id)) continue;
-        const rp0 = buildRepost(mb);
-        if (rp0.isRepost) continue;
         seen.add(id);
         const text = mb.text_raw || mb.text || '';
         const d = parseDate(mb.created_at);
@@ -645,10 +651,11 @@ async function main() {
       console.log(`[移动] 第${pn}页 返回${list.length} since_id=${mobileSinceId || ''}`);
       if (!list.length) { stale++; if (stale >= 5) break; }
       for (const mb of list) {
+        // 过滤转发和非原创
+        if (mb.retweeted_status) continue;
+        
         const id = String(mb.id);
         if (seen.has(id)) continue;
-        const rp0 = buildRepost(mb);
-        if (rp0.isRepost) continue;
         seen.add(id);
         const text = mb.text_raw || mb.text || '';
         const d = parseDate(mb.created_at);
